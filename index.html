@@ -167,7 +167,7 @@
             nav button span { font-size: 0.625rem; }
             
             /* Modal adjustments - make truly responsive */
-            .fixed.inset-0 { 
+            .fixed.inset-0:not(.hidden) { 
                 position: fixed !important;
                 top: 0 !important;
                 left: 0 !important;
@@ -176,23 +176,23 @@
                 width: 100% !important;
                 height: 100% !important;
             }
-            .fixed.inset-0 > div { 
+            .fixed.inset-0:not(.hidden) > div { 
                 width: calc(100% - 2rem) !important; 
                 max-width: calc(100% - 2rem) !important; 
                 margin: 1rem !important; 
                 max-height: calc(100vh - 2rem) !important;
             }
-            #settings-modal > div { 
+            #settings-modal:not(.hidden) > div { 
                 height: calc(100vh - 2rem) !important; 
                 max-height: calc(100vh - 2rem) !important;
             }
-            #history-modal > div { 
+            #history-modal:not(.hidden) > div { 
                 height: calc(100vh - 2rem) !important; 
                 max-height: calc(100vh - 2rem) !important;
             }
             
             /* Login overlay - ensure full screen */
-            .login-overlay {
+            .login-overlay:not(.hidden) {
                 position: fixed !important;
                 top: 0 !important;
                 left: 0 !important;
@@ -200,6 +200,11 @@
                 bottom: 0 !important;
                 width: 100% !important;
                 height: 100% !important;
+            }
+            
+            /* Ensure hidden login overlay stays hidden */
+            .login-overlay.hidden {
+                display: none !important;
             }
             
             /* Account balances - stack on mobile */
@@ -257,7 +262,7 @@
             .nav-btn { min-height: 60px; }
             
             /* Ensure fixed elements work on touch devices */
-            nav.fixed, .fixed.inset-0, .login-overlay {
+            nav.fixed, .fixed.inset-0:not(.hidden), .login-overlay:not(.hidden) {
                 position: fixed !important;
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
@@ -276,7 +281,7 @@
             }
             
             /* Adjust modals for landscape */
-            .fixed.inset-0 > div {
+            .fixed.inset-0:not(.hidden) > div {
                 max-height: calc(100vh - 1rem) !important;
             }
          }
@@ -290,10 +295,15 @@
             }
             
             /* Make sure modals are properly centered */
-            .fixed.inset-0 {
+            .fixed.inset-0:not(.hidden) {
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
+            }
+            
+            /* Ensure hidden modals stay hidden */
+            .fixed.inset-0.hidden {
+                display: none !important;
             }
             
             /* Account delete button responsive */
